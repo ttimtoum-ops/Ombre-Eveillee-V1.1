@@ -1,5 +1,5 @@
-const VERSION='oe-cache-v4';
-const CORE=['./','./index.html','./manifest.json','./icon.svg'];
+const VERSION='oe-cache-release-candidate-1';
+const CORE=['./','./index.html','./manifest.json','./icon.svg','./sprites/abyss_demon.png','./sprites/shadow_assassin.png','./sprites/shadow_knight.png','./sprites/skeleton_knight.png','./sprites/golem.png','./sprites/necromancer.png','./sprites/shadow_wolf.png','./sprites/wraith.png'];
 self.addEventListener('install',event=>event.waitUntil((async()=>{const cache=await caches.open(VERSION);await cache.addAll(CORE);await self.skipWaiting()})()));
 self.addEventListener('activate',event=>event.waitUntil((async()=>{for(const key of await caches.keys())if(key.startsWith('oe-cache-')&&key!==VERSION)await caches.delete(key);await self.clients.claim()})()));
 self.addEventListener('message',event=>{if(event.data==='SKIP_WAITING')self.skipWaiting()});
